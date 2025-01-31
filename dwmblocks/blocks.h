@@ -5,11 +5,11 @@ static const Block blocks[] = {
   {"┇  ", "echo \"$(cat /sys/class/power_supply/BAT0/capacity)%\"", 15, 0},
 	{"󰍛 ", "free -h | awk '/^Mem/ { print $3\"/\"$2 }' | sed s/i//g",	30,		0},
 
-	{" " , "date '+%d.%m'", 60, 0},
+	{" " , "date '+%a %b %D'", 60, 0},
 	{" ", "date '+%H:%M  '", 5, 0},
 
 };
 
 //sets delimiter between status commands. NULL character ('\0') means no delimiter.
-static char delim[] = "  ┇  ";
+static char delim[] = " ┇ ";
 static unsigned int delimLen = 7;
