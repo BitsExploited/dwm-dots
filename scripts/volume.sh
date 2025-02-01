@@ -30,10 +30,10 @@ split() {
 vol="$(printf "%.0f" "$(split "$vol" ".")")"
 
 case 1 in
-	$((vol >= 70)) ) icon="🔊" ;;
-	$((vol >= 30)) ) icon="🔉" ;;
-	$((vol >= 1)) ) icon="🔈" ;;
+	$((vol >= 70)) ) icon=" " ;;
+	$((vol >= 30)) ) icon=" " ;;
+	$((vol >= 1)) ) icon=" " ;;
 	* ) echo 🔇 && exit ;;
 esac
 
-echo "$icon $vol%"
+echo "$icon$vol%"
