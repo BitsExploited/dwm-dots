@@ -2,11 +2,11 @@
 #include <X11/XF86keysym.h>
 /* appearance */
 static const unsigned int borderpx  = 3;        /* border pixel of windows */
-static const unsigned int gappx     = 9;    	/* window gaps */
+static const unsigned int gappx     = 13;    	/* window gaps */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
-static const char *fonts[]          = { "Iosevka Nerd Font:style:bold:size=17" };
+static const char *fonts[]          = { "Iosevka Nerd Font:style:medium:size=17" };
 static const char dmenufont[]       = "monospace:size=10";
 static const char col_gray1[]       = "#2e3440";
 static const char col_gray2[]       = "#4c566a";
@@ -73,8 +73,8 @@ static const char *termcmd[]  = { "st", NULL };
 static const Key keys[] = {
 	/* modifier                     key        function        argument */
 	// screenshot fullscreen and cropped
-    	{MODKEY|ControlMask,                XK_s,       spawn,                     SHCMD("maim | xclip -selection clipboard -t image/png")},
-    	{MODKEY,                            XK_s,       spawn,			   SHCMD("maim --select | xclip -selection clipboard -t image/png")},
+    	{MODKEY|ControlMask,                XK_s,       spawn,                     SHCMD("flameshot full")},
+    	{MODKEY,                            XK_s,       spawn,			   SHCMD("flameshot gui")},
 	/* custom  */
 	{ 0,                            XF86XK_AudioMute,           spawn,          SHCMD("pactl set-sink-mute 0 toggle") },
 	{ 0,                            XF86XK_AudioLowerVolume,    spawn,          SHCMD("pactl set-sink-volume 0 -3%") },
