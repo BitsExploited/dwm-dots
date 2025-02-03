@@ -6,7 +6,7 @@ static const unsigned int gappx     = 13;    	/* window gaps */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
-static const char *fonts[]          = { "Iosevka Nerd Font:style:medium:size=17" };
+static const char *fonts[]          = { "JetBrainsMono Nerd Font:style:bold:size=16" };
 static const char dmenufont[]       = "monospace:size=10";
 static const char col_gray1[]       = "#2e3440";
 static const char col_gray2[]       = "#4c566a";
