@@ -74,7 +74,7 @@ static const Key keys[] = {
 	/* modifier                     key        function        argument */
 	// screenshot fullscreen and cropped
     	{MODKEY|ControlMask,                XK_s,       spawn,                     SHCMD("flameshot full")},
-    	{MODKEY,                            XK_s,       spawn,			   SHCMD("flameshot gui")},
+    	{MODKEY,                            XK_s,       spawn,			   SHCMD("maim --select -o ~/Pictures/Screenshots/$(date +%s).png")},
 	/* custom  */
 	{ 0,                            XF86XK_AudioMute,           spawn,          SHCMD("pactl set-sink-mute 0 toggle") },
 	{ 0,                            XF86XK_AudioLowerVolume,    spawn,          SHCMD("pactl set-sink-volume 0 -3%") },
