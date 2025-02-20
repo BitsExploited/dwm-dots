@@ -7,8 +7,7 @@ static const Block blocks[] = {
   {"", "sh ~/dwm-dots/scripts/volume.sh", 1, 0},
   {"󰖩  ", "sh ~/dwm-dots/scripts/wifi.sh", 30, 0},
   {"󰂯 ", "sh ~/dwm-dots/scripts/bluetooth.sh", 60, 0},
-	{"  ", "date '+%H:%M'", 60, 0},
-  {"  ", "sh ~/dwm-dots/scripts/playing.sh", 10, 0}
+	{"  ", "date '+%H:%M '", 60, 0}
 
 };
 

@@ -1,23 +1,35 @@
 /* See LICENSE file for copyright and license details. */
-
+#include <X11/XF86keysym.h>
 /* appearance */
-static const unsigned int borderpx  = 1;        /* border pixel of windows */
+static const unsigned int borderpx  = 0;        /* border pixel of windows */
+static const unsigned int gappx     = 20;    	/* window gaps */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
-static const char *fonts[]          = { "CaskaydiaMono Nerd Font:style:semibold:size=15" };
+static const int vertpad            = 20;       /* vertical padding of bar */
+static const int sidepad            = 20;       /* horizontal padding of bar */
+static const char *fonts[]          = { "JetBrainsMono Nerd Font:style:bold:size=16" };
 static const char dmenufont[]       = "monospace:size=10";
-static const char col_gray1[]       = "#222222";
-static const char col_gray2[]       = "#444444";
+static const char col_gray1[]       = "#2e3440";
+static const char col_gray2[]       = "#4c566a";
 static const char col_gray3[]       = "#bbbbbb";
 static const char col_gray4[]       = "#eeeeee";
-static const char col_cyan[]        = "#005577";
+static const char col_cyan[]        = "#5e81ac";
+static const char col_cyan1[]       = "#88c0d0";
+static const char col_red[]	    = "#bf616a";
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
-	[SchemeNorm] = { col_gray3, col_gray1, col_gray2 },
+	[SchemeNorm] = { col_gray3, col_gray1, col_red },
 	[SchemeSel]  = { col_gray4, col_cyan,  col_cyan  },
 };
 
+static const char *tagsel[][2] = {
+   /*   fg         bg    */
+  { col_cyan1, col_gray1 }, /* norm */
+  { col_gray4, col_cyan  }, /* sel */
+  { col_red,  col_gray1  }, /* occ but not sel */
+  { col_cyan,  col_gray3 }, /* has pinned tag */
+};
 /* tagging */
 static const char *tags[] = {"", "󰈹", "", "", ""};
 
@@ -62,6 +74,15 @@ static const char *termcmd[]  = { "st", NULL };
 
 static const Key keys[] = {
 	/* modifier                     key        function        argument */
+	// screenshot fullscreen and cropped
+    	{MODKEY|ControlMask,                XK_s,       spawn,                     SHCMD("flameshot full")},
+    	{MODKEY,                            XK_s,       spawn,			   SHCMD("maim --select -o ~/Pictures/Screenshots/$(date +%s).png")},
+	/* custom  */
+	{ 0,                            XF86XK_AudioMute,           spawn,          SHCMD("pactl set-sink-mute 0 toggle") },
+	{ 0,                            XF86XK_AudioLowerVolume,    spawn,          SHCMD("pactl set-sink-volume 0 -3%") },
+  	{ 0,                            XF86XK_AudioRaiseVolume,    spawn,          SHCMD("pactl set-sink-volume 0 +3%") },
+  	{ 0,                            XF86XK_MonBrightnessUp,     spawn,          SHCMD("brightnessctl g +5%") },
+  	{ 0,                            XF86XK_MonBrightnessDown,   spawn,          SHCMD("brightnessctl g 5%-") },
 	{ MODKEY,                       XK_r,      spawn,   	   SHCMD("rofi -show drun") },
 	{ MODKEY,                       XK_q, spawn,          SHCMD("kitty") },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
@@ -73,7 +94,7 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_l,      setmfact,       {.f = +0.05} },
 	{ MODKEY,                       XK_Return, zoom,           {0} },
 	{ MODKEY,                       XK_Tab,    view,           {0} },
-	{ MODKEY|ShiftMask,             XK_c,      killclient,     {0} },
+	{ MODKEY,                       XK_c,      killclient,     {0} },
 	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },
 	{ MODKEY,                       XK_f,      setlayout,      {.v = &layouts[1]} },
 	{ MODKEY,                       XK_m,      setlayout,      {.v = &layouts[2]} },

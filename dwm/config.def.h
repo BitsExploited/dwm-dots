@@ -1,28 +1,31 @@
 /* See LICENSE file for copyright and license details. */
 #include <X11/XF86keysym.h>
 /* appearance */
-static const unsigned int borderpx  = 3;        /* border pixel of windows */
-static const unsigned int gappx     = 9;    	/* window gaps */
+static const unsigned int borderpx  = 0;        /* border pixel of windows */
+static const unsigned int gappx     = 20;    	/* window gaps */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
-static const char *fonts[]          = { "Iosevka Nerd Font:style:bold:size=16" };
+static const int vertpad            = 20;       /* vertical padding of bar */
+static const int sidepad            = 20;       /* horizontal padding of bar */
+static const char *fonts[]          = { "JetBrainsMono Nerd Font:style:bold:size=16" };
 static const char dmenufont[]       = "monospace:size=10";
 static const char col_gray1[]       = "#2e3440";
 static const char col_gray2[]       = "#4c566a";
 static const char col_gray3[]       = "#bbbbbb";
 static const char col_gray4[]       = "#eeeeee";
 static const char col_cyan[]        = "#5e81ac";
+static const char col_cyan1[]       = "#88c0d0";
 static const char col_red[]	    = "#bf616a";
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
-	[SchemeNorm] = { col_gray3, col_gray1, col_gray2 },
+	[SchemeNorm] = { col_gray3, col_gray1, col_red },
 	[SchemeSel]  = { col_gray4, col_cyan,  col_cyan  },
 };
 
 static const char *tagsel[][2] = {
    /*   fg         bg    */
-  { col_gray3, col_gray1 }, /* norm */
+  { col_cyan1, col_gray1 }, /* norm */
   { col_gray4, col_cyan  }, /* sel */
   { col_red,  col_gray1  }, /* occ but not sel */
   { col_cyan,  col_gray3 }, /* has pinned tag */
@@ -72,8 +75,8 @@ static const char *termcmd[]  = { "st", NULL };
 static const Key keys[] = {
 	/* modifier                     key        function        argument */
 	// screenshot fullscreen and cropped
-    	{MODKEY|ControlMask,                XK_s,       spawn,                     SHCMD("maim | xclip -selection clipboard -t image/png")},
-    	{MODKEY,                            XK_s,       spawn,			   SHCMD("maim --select | xclip -selection clipboard -t image/png")},
+    	{MODKEY|ControlMask,                XK_s,       spawn,                     SHCMD("flameshot full")},
+    	{MODKEY,                            XK_s,       spawn,			   SHCMD("maim --select -o ~/Pictures/Screenshots/$(date +%s).png")},
 	/* custom  */
 	{ 0,                            XF86XK_AudioMute,           spawn,          SHCMD("pactl set-sink-mute 0 toggle") },
 	{ 0,                            XF86XK_AudioLowerVolume,    spawn,          SHCMD("pactl set-sink-volume 0 -3%") },
