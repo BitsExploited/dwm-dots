@@ -76,16 +76,17 @@ static const char *termcmd[]  = { "st", NULL };
 static const Key keys[] = {
 	/* modifier                     key        function        argument */
 	// screenshot fullscreen and cropped
-    	{MODKEY|ControlMask,                XK_s,       spawn,                     SHCMD("flameshot full")},
-    	{MODKEY,                            XK_s,       spawn,			   SHCMD("maim --select -o ~/Pictures/Screenshots/$(date +%s).png")},
+    	{MODKEY|ControlMask,        XK_s,                       spawn,          SHCMD("flameshot full")},
+    	{MODKEY,                    XK_s,                       spawn,          SHCMD("flameshot gui -p ~/Pictures/Screenshots/")},
+      {MODKEY,                    XK_e,                       spawn,          SHCMD("pkill flameshot")},
 	/* custom  */
 	{ 0,                            XF86XK_AudioMute,           spawn,          SHCMD("pactl set-sink-mute 0 toggle") },
 	{ 0,                            XF86XK_AudioLowerVolume,    spawn,          SHCMD("pactl set-sink-volume 0 -3%") },
-  	{ 0,                            XF86XK_AudioRaiseVolume,    spawn,          SHCMD("pactl set-sink-volume 0 +3%") },
-  	{ 0,                            XF86XK_MonBrightnessUp,     spawn,          SHCMD("brightnessctl g +5%") },
-  	{ 0,                            XF86XK_MonBrightnessDown,   spawn,          SHCMD("brightnessctl g 5%-") },
+  	{ 0,                          XF86XK_AudioRaiseVolume,    spawn,          SHCMD("pactl set-sink-volume 0 +3%") },
+  	{ 0,                          XF86XK_MonBrightnessUp,     spawn,          SHCMD("brightnessctl g +5%") },
+  	{ 0,                          XF86XK_MonBrightnessDown,   spawn,          SHCMD("brightnessctl g 5%-") },
 	{ MODKEY,                       XK_r,      spawn,   	   SHCMD("rofi -show drun") },
-	{ MODKEY,                       XK_q, spawn,          SHCMD("kitty") },
+	{ MODKEY,                       XK_q,      spawn,        SHCMD("kitty") },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
