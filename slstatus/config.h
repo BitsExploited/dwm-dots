@@ -69,5 +69,5 @@ static const struct arg args[] = {
     {run_command, "   %s% |", "pamixer --get-volume"},
     {ram_used, "   %s |", NULL},
     {run_command, " 󱑃 %s |", "date +%H:%M"},
-    {wifi_essid, "   %s |", "wlan0"},
+    {wifi_essid, "   %s ", "wlan0"},
 };
